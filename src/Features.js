@@ -1,15 +1,18 @@
 import React from "react"
-import {Link} from "react-router-dom"
-import "./features.css"
+import { Link, Route} from "react-router-dom"
 
+import "./features.css"
+import Category from "./Category"
 
 
 function Tag(props){
     return(
-    <Link to = {`/photos/${props.children}`} className="feature-item">
-         {props.children}
-    </Link>
-   
+        <div>
+            <Link to = {`/photos/${props.children}`} className="feature-item">
+                {props.children}
+            </Link>
+            <Route path = "/photos/:id" exact component = {Category} />
+        </div>      
     )
 }
 

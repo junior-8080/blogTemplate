@@ -19,17 +19,19 @@ class Home extends Component {
   }
 
   componentDidMount(){
+
+    this.setState({isLoading: true})
     fetch(`https://api.unsplash.com/photos/?client_id=`+api_key)
-        .then(res => res.json())
-        .then(data => {
-            this.setState({
-              images:data
-            })
-        })
+      .then(res => res.json())
+      .then(data => {
+          this.setState({
+            images:data,
+            isLoading: false
+          })
+      })
   }
 
   handleChange = (event) => (
-
     this.setState({
       query:event.target.value,
     })
@@ -37,7 +39,7 @@ class Home extends Component {
 
   handleClick = (param) => {
      this.setState({
-        query:param
+        query: param
      })
  }
  
@@ -59,7 +61,7 @@ class Home extends Component {
                 handleChange = {this.handleChange}
                  /> 
             <main className="main">
-              <Features className="features" handleClick= {this.handleClick}/>
+              <Features className="features"  />
               <div className="gallery">
                 {
                   post
