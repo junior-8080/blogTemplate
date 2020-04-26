@@ -1,7 +1,6 @@
 import React from "react"
 
 import Search from "./Search"
-import Features from "./Features"
 import "./header.css"
 
 function Header(props){
