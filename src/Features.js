@@ -1,8 +1,7 @@
 import React from "react"
-import { Link, Route} from "react-router-dom"
+import { Link } from "react-router-dom"
 
 import "./features.css"
-import Category from "./Category"
 
 
 function Tag(props){
@@ -11,7 +10,6 @@ function Tag(props){
             <Link to = {`/photos/${props.children}`} className="feature-item">
                 {props.children}
             </Link>
-            <Route path = "/photos/:id" exact component = {Category} />
         </div>      
     )
 }

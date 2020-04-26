@@ -19,16 +19,28 @@ class Category extends Component {
 
   componentDidMount(){
     fetch(`https://api.unsplash.com/search/photos/?&query=${this.state.query}&client_id=`+api_key)
-        .then(res => res.json())
-        .then(data => {
-            this.setState({
-              images:data
-            })
-        })
+      .then(res => res.json())
+      .then(data => {
+          this.setState({
+            images: data
+          })
+      })
   }
 
-  handleChange = (event) => (
+  componentWillReceiveProps (nextProps) {
+    if (nextProps.match.params.id !== this.props.match.params.id) {
+      fetch(`https://api.unsplash.com/search/photos/?&query=${nextProps.match.params.id}&client_id=`+api_key)
+      .then(res => res.json())
+      .then(data => {
+          this.setState({
+            images: data
+          })
+      })
+    }
+  }
 
+
+  handleChange = (event) => (
     this.setState({
       query:event.target.value,
     })
