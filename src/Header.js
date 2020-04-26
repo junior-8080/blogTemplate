@@ -1,7 +1,6 @@
 import React from "react"
 
 import Search from "./Search"
-import Features from "./Features"
 import "./header.css"
 
 function Header(props){
@@ -10,7 +9,7 @@ function Header(props){
         <header className = "header">
             <div className="header-flex">
                 <h1 className="logo">IMAGE APP</h1>
-                <Search  handleChange = {props.handleChange}  handleSubmit = {props.handleSubmit} className="search" />
+                <Search  handleChange = {props.handleChange}  handleSubmit = {props.handleClick} className="search" />
             </div>
             
         </header>

@@ -4,7 +4,8 @@ import Header from "./Header"
 import Features from "./Features"
 import "./home.css"
 import "./features.css"
-let api_key = process.env.REACT_APP_API_KEY
+
+const api_key = process.env.REACT_APP_API_KEY
 
 class Home extends Component {
   
@@ -18,17 +19,19 @@ class Home extends Component {
   }
 
   componentDidMount(){
-    fetch(`https://api.unsplash.com/photos/?client_id=c5hEeNtgCwstBdWxly7xCFvGu4_-MelUFYTtNzpVgZk`)
-        .then(res => res.json())
-        .then(data => {
-            this.setState({
-              images:data
-            })
-        })
+
+    this.setState({isLoading: true})
+    fetch(`https://api.unsplash.com/photos/?client_id=`+api_key)
+      .then(res => res.json())
+      .then(data => {
+          this.setState({
+            images:data,
+            isLoading: false
+          })
+      })
   }
 
   handleChange = (event) => (
-
     this.setState({
       query:event.target.value,
     })
@@ -36,7 +39,7 @@ class Home extends Component {
 
   handleClick = (param) => {
      this.setState({
-        query:param
+        query: param
      })
  }
  
@@ -45,7 +48,7 @@ class Home extends Component {
      this.state.images.map(post => {
             return(
               <div className="image" key={post.id}>
-                <img src= {`${post.urls.small}`} alt={`image-${post.id}`} width="100%" height="auto"/>
+                <img src= {`${post.urls.small}`} alt={`${post.id}`} width="100%" height="auto"/>
               </div>
             )
     })
@@ -58,7 +61,7 @@ class Home extends Component {
                 handleChange = {this.handleChange}
                  /> 
             <main className="main">
-              <Features className="features" handleClick= {this.handleClick}/>
+              <Features className="features"  />
               <div className="gallery">
                 {
                   post

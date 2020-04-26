@@ -1,15 +1,16 @@
 import React from "react"
-import {Link} from "react-router-dom"
-import "./features.css"
+import { Link } from "react-router-dom"
 
+import "./features.css"
 
 
 function Tag(props){
     return(
-    <Link to = {`/photos/${props.children}`} className="feature-item">
-         {props.children}
-    </Link>
-   
+        <div>
+            <Link to = {`/photos/${props.children}`} className="feature-item">
+                {props.children}
+            </Link>
+        </div>      
     )
 }
 
