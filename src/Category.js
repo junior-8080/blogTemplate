@@ -16,6 +16,9 @@ class Category extends Component {
       isLoading: false,
     }
   }
+  handleSubmit =() => {
+    alert("submit")
+  }
 
   componentDidMount(){
     fetch(`https://api.unsplash.com/search/photos/?&query=${this.state.query}&client_id=`+api_key)
@@ -24,10 +27,12 @@ class Category extends Component {
           this.setState({
             images: data
           })
+          
       })
   }
-
+// why this..
   componentWillReceiveProps (nextProps) {
+    console.log(nextProps)
     if (nextProps.match.params.id !== this.props.match.params.id) {
       fetch(`https://api.unsplash.com/search/photos/?&query=${nextProps.match.params.id}&client_id=`+api_key)
       .then(res => res.json())
@@ -62,6 +67,7 @@ class Category extends Component {
         <Header 
             handleClick = {this.handleClick} 
             handleChange = {this.handleChange}
+            handleSubmit ={this.handleSubmit}
             /> 
         <main className="main">
           <Features className="features"  />

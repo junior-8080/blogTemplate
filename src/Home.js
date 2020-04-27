@@ -21,7 +21,7 @@ class Home extends Component {
   componentDidMount(){
 
     this.setState({isLoading: true})
-    fetch(`https://api.unsplash.com/photos/?client_id=`+api_key)
+    fetch(`https://api.unsplash.com/photos/?page=1&per_page=30&client_id=`+api_key)
       .then(res => res.json())
       .then(data => {
           this.setState({
@@ -42,7 +42,17 @@ class Home extends Component {
         query: param
      })
  }
- 
+ handleSubmit = (event) =>{
+   event.preventDefault()
+   fetch(`https://api.unsplash.com/search/photos/?page=1&per_page=30&query=${this.state.query}&client_id=`+api_key)
+      .then(res => res.json())
+      .then(data => {
+          this.setState({
+            images: data.results
+          })
+        
+      })
+ }
   render() {
    let post = this.state.images.length !==0?
      this.state.images.map(post => {
@@ -59,6 +69,7 @@ class Home extends Component {
             <Header 
                 handleClick = {this.handleClick} 
                 handleChange = {this.handleChange}
+                handleSubmit = {this.handleSubmit}
                  /> 
             <main className="main">
               <Features className="features"  />
@@ -68,8 +79,6 @@ class Home extends Component {
                 }
               </div>
             </main>   
-            
-            
           </div>
     );
   }

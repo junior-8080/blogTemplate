@@ -9,7 +9,7 @@ function Header(props){
         <header className = "header">
             <div className="header-flex">
                 <h1 className="logo">IMAGE APP</h1>
-                <Search  handleChange = {props.handleChange}  handleSubmit = {props.handleClick} className="search" />
+                <Search  handleChange = {props.handleChange}  handleSubmit = {props.handleSubmit} className="search" />
             </div>
             
         </header>
