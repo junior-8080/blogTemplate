@@ -4,6 +4,7 @@ import Header from "./Header"
 import Features from "./Features"
 import "./home.css"
 import "./features.css"
+import "./header.css"
 
 const api_key = process.env.REACT_APP_API_KEY
 
@@ -44,14 +45,15 @@ class Home extends Component {
  }
  handleSubmit = (event) =>{
    event.preventDefault()
-   fetch(`https://api.unsplash.com/search/photos/?page=1&per_page=30&query=${this.state.query}&client_id=`+api_key)
-      .then(res => res.json())
-      .then(data => {
-          this.setState({
-            images: data.results
-          })
+  //  fetch(`https://api.unsplash.com/search/photos/?page=1&per_page=30&query=${this.state.query}&client_id=`+api_key)
+  //     .then(res => res.json())
+  //     .then(data => {
+  //         this.setState({
+  //           images: data.results
+  //         })
         
-      })
+  //     })
+  this.props.history.push(`/photos/${this.state.query}`)
  }
   render() {
    let post = this.state.images.length !==0?

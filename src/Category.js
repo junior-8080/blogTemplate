@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 
 import Header from "./Header"
 import Features from "./Features"
+import Pargination from "./Pagination"
+import "./header.css"
 
 const api_key = process.env.REACT_APP_API_KEY
 
@@ -14,14 +16,16 @@ class Category extends Component {
       images : [],
       query: props.match.params.id,
       isLoading: false,
+      pageNumber : 1
     }
   }
-  handleSubmit =() => {
-    alert("submit")
+  handleSubmit = (event) => {
+    event.preventDefault()
+    this.props.history.push(`/photos/${this.state.query}`)
   }
 
   componentDidMount(){
-    fetch(`https://api.unsplash.com/search/photos/?&query=${this.state.query}&client_id=`+api_key)
+    fetch(`https://api.unsplash.com/search/photos/?page=${this.state.pageNumber}&query=${this.state.query}&client_id=`+api_key)
       .then(res => res.json())
       .then(data => {
           this.setState({
@@ -34,12 +38,13 @@ class Category extends Component {
   componentWillReceiveProps (nextProps) {
     console.log(nextProps)
     if (nextProps.match.params.id !== this.props.match.params.id) {
-      fetch(`https://api.unsplash.com/search/photos/?&query=${nextProps.match.params.id}&client_id=`+api_key)
+      fetch(`https://api.unsplash.com/search/photos/?page=${this.state.pageNumber}&query=${nextProps.match.params.id}&client_id=`+api_key)
       .then(res => res.json())
       .then(data => {
           this.setState({
             images: data
           })
+         
       })
     }
   }
@@ -51,6 +56,32 @@ class Category extends Component {
     })
   )
  
+  handlePrevious = () => (
+      this.state.pageNumber >= 1?
+      fetch(`https://api.unsplash.com/search/photos/?page=${this.state.pageNumber - 1}&query=${this.state.query}&client_id=`+api_key)
+        .then(res => res.json())
+        .then(data => {
+          this.setState({
+            images: data
+          })
+          
+      })
+      : null
+  )
+  
+  handleNext = () => (
+    this.state.pageNumber < this.state.images.total_pages?
+    fetch(`https://api.unsplash.com/search/photos/?page=${this.state.pageNumber + 1}&query=${this.state.query}&client_id=`+api_key)
+      .then(res => res.json())
+      .then(data => {
+          this.setState({
+            images: data
+          })
+          
+      })
+    : null
+  )
+
   render() {
    let post = this.state.images.length !== 0?
      this.state.images.results.map(post => {
@@ -69,6 +100,7 @@ class Category extends Component {
             handleChange = {this.handleChange}
             handleSubmit ={this.handleSubmit}
             /> 
+            <h1>This is category</h1>
         <main className="main">
           <Features className="features"  />
           <div className="gallery">
@@ -76,9 +108,9 @@ class Category extends Component {
               post
             }
           </div>
+          <small>page {`${this.state.pageNumber}`}</small>
+          <Pargination  handleNext = {this.handleNext} handlePrevious = {this.handlePrevious}/>
         </main>   
-      
-      
     </div>  
     );
   }  
