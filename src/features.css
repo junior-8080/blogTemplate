@@ -1,21 +1,16 @@
 .features{
     display:flex;
     flex-wrap: wrap;
-    /* justify-content: center; */
+    justify-content: center;
     padding-top: 80px;
-    width:100%;
+    margin:auto;
 }
 .feature-item{
     text-decoration: none;
     padding:5px;
     background-color: rgb(228, 227, 227);
     color:#000000;
-    margin-left: 2px;
+    margin: 2px 2px 2px 2px;
     border-radius:10px;
     font-size: smaller;
-}
-@media(max-width:750px){
-    .features{
-        margin-left: 5px;
-    }
 }

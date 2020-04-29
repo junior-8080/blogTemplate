@@ -1,17 +1,21 @@
 import React from "react"
+import {Link} from "react-router-dom"
 
 import Search from "./Search"
+import logo from "./logo1.png"
 import "./header.css"
 
 function Header(props){
 
     return(
         <header className = "header">
-            <div className="header-flex">
-                <h1 className="logo">IMAGE APP</h1>
-                <Search  handleChange = {props.handleChange}  handleSubmit = {props.handleSubmit} className="search" />
+            <div className = "header-flex">
+                <Link to = "/" className = "logo link">
+                     <img src={logo} width="100px" height="50px" alt="logo" />
+                </Link>
+                <Search  handleChange = {props.handleChange}  handleSubmit = {props.handleSubmit} />
+                 <small className="powered">powered by upsplah api</small>
             </div>
-            
         </header>
     )
 }

@@ -1,15 +1,22 @@
-
+form{
+    flex-basis: 50%;
+}
 input{
-    /* width:100%; */
     padding:5px;
     border:none;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid #ffffff;
+    width:80%;
+    background-color: #292727;
+    color:#ffffff;
+    font-size: 14px;
 }
 input::placeholder{
-    font-size:1em;
+    font-size:16px;
     font-style: italic;
-    text-align: center;
 }
 input:focus{
     outline: none;
+}
+form > i {
+    cursor: pointer;
 }

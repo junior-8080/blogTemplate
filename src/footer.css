@@ -1,0 +1,14 @@
+footer{
+    padding:10px;
+    background-color: #292727;
+    color:#ffffff;
+    display: flex;
+    justify-content: space-evenly;
+    justify-items: center;
+    align-items: center;
+    margin-top: 50px;
+}
+.link{
+ text-decoration: none;
+ color:#ffffff;
+}
