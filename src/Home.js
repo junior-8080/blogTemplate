@@ -83,8 +83,6 @@ class Home extends Component {
                     }
                 </MasonryGrid>
               </div>
-             
-              
             </main>   
             <Footer />
           </div>
