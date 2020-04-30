@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
+import MasonryGrid from "masonry-grid"
 
 import Header from './Header'
 import Features from './Features'
 import Footer from './Footer'
 import './home.css'
+
 
 const api_key = process.env.REACT_APP_API_KEY
 
@@ -52,16 +54,14 @@ class Home extends Component {
    let post = this.state.images.length !==0?
      this.state.images.map(post => {
             return(
-      
-                <div className="image"  key={post.id}>
-                  <img src= {`${post.urls.small}`} alt={`${post.id}`} width="400px" height="auto"/>
-                </div>
-              
+                  <img className="image" key={post.id} src= {`${post.urls.small}`} alt={`${post.id}`} width="400px" height="auto" />
+            
             )
     })
     :null
 
-    return (   
+    return ( 
+          this.state.images.length !== 0?
           <div className="home">
             <Header 
                 handleClick = {this.handleClick} 
@@ -70,14 +70,18 @@ class Home extends Component {
                  /> 
             <main className="main">
               <Features className="features" handleClick={this.handleClick}  />
-              <div className="gallery">
-                {
-                  post
-                }
-              </div>
+              
+              <MasonryGrid gap="2px" className="masonry" minWidth="400">
+                  {
+                    post
+                  }
+              </MasonryGrid>
+              
             </main>   
             <Footer />
           </div>
+          :
+          null
     );
   }
 

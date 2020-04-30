@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {Link} from "react-router-dom"
+import MasonryGrid from "masonry-grid"
 
 import Header from "./Header"
 import Features from "./Features"
@@ -124,16 +125,16 @@ class Category extends Component {
             /> 
          {
            this.state.isLoading ?
-           <main className="main">
+          <main className="main">
             <Features className="features" handleClick={this.handleClick}/>
-            <div className="gallery">
-              {
-                post
-              }
-            </div>
+              <MasonryGrid gap="2px" className="masonry" minWidth="400">
+                    {
+                      post
+                    }
+                </MasonryGrid>
             <p className="page">page {`${this.state.pageNumber}`}</p>
             <Pargination  handleNext = {this.handleNext} handlePrevious = {this.handlePrevious}/>
-        </main> 
+          </main> 
         :
         <div class="loader"></div> 
          }

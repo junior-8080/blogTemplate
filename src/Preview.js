@@ -56,7 +56,7 @@ class Preview extends Component{
              <div className="preview">
                 <div className="photoHeader">
                     <div className="user">
-                        <img src={`${this.state.image.user.profile_image.small}`} /><br />
+                        <img src={`${this.state.image.user.profile_image.small}`} alt="logos" /><br />
                         <small>Photo credit:{this.state.image.user.name}</small>
                      </div>
                      <button className="btn">download</button>

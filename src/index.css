@@ -1,8 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Quicksand');
+
 :root {
   box-sizing:border-box
 }
-*
+*,::before,::after
  {
   box-sizing: inherit;
 }
