@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import MasonryGrid from "masonry-grid"
+import {Link} from "react-router-dom"
 
 import Header from './Header'
 import Features from './Features'
@@ -54,12 +55,17 @@ class Home extends Component {
    let post = this.state.images.length !==0?
      this.state.images.map(post => {
             return(
+              <div className="masonry-item">
+                <div>
+                <Link  to= {`/photo/preview/${post.id}`}  className="link">
+                   <h5 onClick={this.handlePreview}>View</h5>
+                </Link>
+                </div>
                   <img className="image" key={post.id} src= {`${post.urls.small}`} alt={`${post.id}`} width="400px" height="auto" />
-            
+                </div>
             )
     })
     :null
-
     return ( 
           this.state.images.length !== 0?
           <div className="home">
@@ -70,12 +76,14 @@ class Home extends Component {
                  /> 
             <main className="main">
               <Features className="features" handleClick={this.handleClick}  />
-              
-              <MasonryGrid gap="2px" className="masonry" minWidth="400">
-                  {
-                    post
-                  }
-              </MasonryGrid>
+              <div className="grid">
+                <MasonryGrid gap="2px" minWidth="400">
+                    {
+                      post
+                    }
+                </MasonryGrid>
+              </div>
+             
               
             </main>   
             <Footer />

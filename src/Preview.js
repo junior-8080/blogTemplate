@@ -58,11 +58,11 @@ class Preview extends Component{
                     <div className="user">
                         <img src={`${this.state.image.user.profile_image.small}`} alt="logos" /><br />
                         <small>Photo credit:{this.state.image.user.name}</small>
-                     </div>
-                     <button className="btn">download</button>
+                    </div>
+                    <button className="btn">download</button>
                 </div>
                 <div className="image">
-                    <img src={`${this.state.image.urls.regular}`} alt="img" width="80%" height="auto"/>
+                    <img src={`${this.state.image.urls.regular}`} alt="img" width="70%" height="auto"/>
                 </div>
              </div>
              :null

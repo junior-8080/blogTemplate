@@ -5,10 +5,10 @@ import './footer.css'
 function Footer(){
     return(
         <footer>
-            <a href="twitter.com" className="link"> <i className="fa fa-instagram"></i></a>
-            <a href="twitter.com" className="link"> <i className="fa fa-twitter"></i></a>
-            <a href="twitter.com" className="link"> <i className="fa fa-linkedin"></i></a>
-            <a href="twitter.com" className="link"> <i className="fa fa-facebook"></i></a> 
+            <a href="twitter.com" className="link-footer"> <i className="fa fa-instagram"></i></a>
+            <a href="twitter.com" className="link-footer"> <i className="fa fa-twitter"></i></a>
+            <a href="twitter.com" className="link-footer"> <i className="fa fa-linkedin"></i></a>
+            <a href="twitter.com" className="link-footer"> <i className="fa fa-facebook"></i></a> 
         </footer>
     )
 }

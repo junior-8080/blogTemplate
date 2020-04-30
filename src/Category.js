@@ -102,12 +102,17 @@ class Category extends Component {
     event.preventDefault()
     this.props.history.push(`/photos/${this.state.query}`)
   }
-
+ 
   render() {
    let post = this.state.images.length !== 0?
      this.state.images.results.map(post => {
             return(
-              <div className="image" key = {post.id}>
+              <div className="masonry-item" key = {post.id}>
+                <div>
+                  <Link  to= {`/photo/preview/${post.id}`}  className="link">
+                   <h5 onClick={this.handlePreview}>View</h5>
+                  </Link>
+                </div>
                 <Link to= {`/photo/preview/${post.id}`} className = "link" >
                   <img src= {`${post.urls.regular}`} alt = {`${post.id}`} width="400px" height="auto"/>
                 </Link>
@@ -117,31 +122,28 @@ class Category extends Component {
     :null
 
     return (
+      this.state.images.length !== 0 ?
       <div className="category">
         <Header 
             handleClick = {this.handleClick} 
             handleChange = {this.handleChange}
             handleSubmit ={this.handleSubmit}
             /> 
-         {
-           this.state.isLoading ?
           <main className="main">
             <Features className="features" handleClick={this.handleClick}/>
-              <MasonryGrid gap="2px" className="masonry" minWidth="400">
+            <div className="grid">
+                 <MasonryGrid gap="2px" className="masonry" minWidth="400">
                     {
                       post
                     }
                 </MasonryGrid>
+            </div>
             <p className="page">page {`${this.state.pageNumber}`}</p>
             <Pargination  handleNext = {this.handleNext} handlePrevious = {this.handlePrevious}/>
           </main> 
-        :
-        <div class="loader"></div> 
-         }
-        
-         
         <Footer />
-    </div>  
+    </div>
+    : null  
     );
   }  
 }
