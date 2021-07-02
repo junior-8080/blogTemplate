@@ -56,16 +56,15 @@ class Home extends Component {
      this.state.images.map(post => {
             return(
               <div className="masonry-item">
-                <div>
+  
                 <Link  to= {`/photo/preview/${post.id}`}  className="link">
-                   <h5 onClick={this.handlePreview}>View</h5>
+                  <img className="image" key={post.id} src= {`${post.urls.small}`} alt={`${post.id}`} height="auto" />
                 </Link>
-                </div>
-                  <img className="image" key={post.id} src= {`${post.urls.small}`} alt={`${post.id}`} width="400px" height="auto" />
-                </div>
+
+             </div>
             )
     })
-    :null
+    :<div className="loading"><p>Loading...</p></div>
     return ( 
           this.state.images.length !== 0?
           <div className="home">
@@ -77,7 +76,7 @@ class Home extends Component {
             <main className="main">
               <Features className="features" handleClick={this.handleClick}  />
               <div className="grid">
-                <MasonryGrid gap="2px" minWidth="400">
+                <MasonryGrid gap="2px" minWidth="400" style={{height:"100%"}}>
                     {
                       post
                     }

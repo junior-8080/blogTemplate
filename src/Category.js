@@ -108,18 +108,14 @@ class Category extends Component {
      this.state.images.results.map(post => {
             return(
               <div className="masonry-item" key = {post.id}>
-                <div>
                   <Link  to= {`/photo/preview/${post.id}`}  className="link">
-                   <h5 onClick={this.handlePreview}>View</h5>
+                  <img src= {`${post.urls.regular}`} alt = {`${post.id}`} className="image" height="auto"/>
                   </Link>
-                </div>
-                <Link to= {`/photo/preview/${post.id}`} className = "link" >
-                  <img src= {`${post.urls.regular}`} alt = {`${post.id}`} width="400px" height="auto"/>
-                </Link>
+
               </div>
             )
     })
-    :null
+    :<div className="loading"><p>Loading...</p></div>
 
     return (
       this.state.images.length !== 0 ?

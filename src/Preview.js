@@ -45,7 +45,7 @@ class Preview extends Component{
     render(){
         
         return(
-            <div>
+            <main>
                 <Header 
                     handleClick = {this.handleClick} 
                     handleChange = {this.handleChange}
@@ -57,18 +57,18 @@ class Preview extends Component{
                 <div className="photoHeader">
                     <div className="user">
                         <img src={`${this.state.image.user.profile_image.small}`} alt="logos" /><br />
-                        <small>Photo credit:{this.state.image.user.name}</small>
+                        <small>Photo credit:<br/>{this.state.image.user.name}</small><br/><br/>
+                        <button className="btn">download</button>
                     </div>
-                    <button className="btn">download</button>
                 </div>
-                <div className="image">
-                    <img src={`${this.state.image.urls.regular}`} alt="img" width="70%" height="auto"/>
+                <div>
+                    <img src={`${this.state.image.urls.regular}`} className="image" alt="img" width="100%" height="auto"/>
                 </div>
              </div>
              :null
             }
             <Footer />
-            </div>  
+            </main>  
         )
     }
 }

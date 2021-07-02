@@ -1,15 +1,32 @@
 .main{
     max-width:100%;
 }
+.image {
+    width:80vw;
+}
+
 .grid{
-    width:100%;
-    display:flex;
-    justify-content: center;
-    margin-top: 20px;
+    margin-top: 10px;
 }
-.masonry{
-    margin-top: 50px;
+
+
+@media screen and (min-width:800px) {
+    .grid{
+        width:100%;
+        display:flex;
+        justify-content: center;
+        margin-top: 20px;
+    }
+    .image {
+      width:400px
+    }
+    .masonry{
+        margin-top: 50px;
+    }
+    
 }
+
+
 .link{
     text-decoration: none;
     color:black
@@ -21,17 +38,10 @@
     background-color: black;
     color:white;
 }
-.image{
-  
-}
+
 .page{
     text-align: center;
 }
-@media(max-width:750px){
-    .image{
 
-    }
-
-}
 
 

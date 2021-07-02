@@ -2,10 +2,9 @@
     background-color:#292727;
     box-shadow: 0px 0px 2px 0px #ffffff;
     color:#ffffff;
-    position: fixed;
+    position: sticky;
+    top:0;
     width: 100%;
-    z-index: 1;
-    margin-top: 0px;
 }
 .header-flex{
     display:flex;
